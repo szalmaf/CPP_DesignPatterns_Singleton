@@ -33,14 +33,14 @@ public:
         static Singleton instance;
         return instance;
     }
-    Singleton * print()
+    Singleton & print()
     {
         cout << "Print from singleton.   " << endl << n << endl;
-        return this;
+        return *this;
     }
-    Singleton * increase() {
+    Singleton & increase() {
         ++n;
-        return this;
+        return *this;
     }
     
 private:
@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
     NonSingleton ns(1);
     NonSingleton ns2 = ns;
     
-    Singleton * sp =  &Singleton::createSingleton(); // Bind singleton to a pointer
-    sp->print()->increase()->print();
+    Singleton &sp =  Singleton::createSingleton(); // Bind singleton to a pointer
+    sp.print().increase().print();
     return 0;
 }

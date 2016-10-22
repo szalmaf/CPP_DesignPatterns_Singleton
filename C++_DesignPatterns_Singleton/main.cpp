@@ -30,7 +30,7 @@ class Singleton
 public:
     static Singleton & createSingleton() // Factory
     {
-        static Singleton instance;
+        static Singleton instance; // Local static object
         return instance;
     }
     Singleton & print()
@@ -61,6 +61,8 @@ int main(int argc, const char * argv[]) {
     NonSingleton ns2 = ns;
     
     Singleton &sp =  Singleton::createSingleton(); // Bind singleton to a pointer
-    sp.print().increase().print();
+    sp.print().increase().print(); // Usage of a Singleton
+    Singleton &sp2 =  Singleton::createSingleton(); // Returns the same sp Singleton
+    sp2.print().increase().print();
     return 0;
 }
